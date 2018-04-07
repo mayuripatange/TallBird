@@ -1,0 +1,252 @@
+<html>
+  <head>
+  
+  <style>
+	#main{
+		width:400px;
+		height:500px;
+		margin:auto;
+		border:thin solid rgb(223,223,223); 
+		}
+	table, tr
+	{
+		border-collapse:collapse;
+		font-family:verdana;
+		width:370px;
+		border-color:transparent;
+	}
+	td
+	{
+		font-family:verdana;
+		text-align: center;
+	}
+	th
+	{
+		background-color:silver;
+		padding : 10px;
+		text-align: center;
+	}
+	::placeholder{
+		font-size:12px;
+		font-family:verdana;
+		}
+	input[type=text],input[type=password],input[type=submit]{
+		display:block;
+		padding:10px;
+		margin-top:10px;
+		margin-left:auto;
+		margin-right:auto;
+		font-family:verdana;
+		width:90%;
+		
+	}
+	select{
+		display:block;
+		padding:10px;
+		margin-top:10px;
+		margin-left:20px;
+		margin-right:auto;
+		font-family:verdana;
+		
+	}
+	label{
+		font-size:12px;
+		display:block;
+		padding:10px;
+		margin-top:auto;
+		margin-left:-40px;
+		margin-right:auto;
+		font-family:verdana;
+		
+	}
+  </style>
+  </head>
+
+ <body>
+	<form id="main" action="#" name="StudentRegistration" onSubmit="return(validate());">
+	<table   align="center"	cellspacing="3" border="1px" >
+		<tr>
+		<td colspan=3>
+		<center><h2>Personal Details</h2></center>
+		</td>
+		</tr>
+
+		<tr>
+		<td colspan=3><input type="text" name="textnames" id="textname" size="50" placeholder="FIRST NAME"></td>
+		</tr>
+		
+		<tr>
+		<td colspan=3><input type="text" name="fathername" id="fathername" size="50" placeholder="LAST NAME"></td>
+		</tr>
+
+		<tr>
+		<td colspan=3><input type="text" name="mobileno" id="mobileno" size="50" placeholder="MOBILE NUMBER"></td>
+		</tr>
+		
+		<tr>
+		<td colspan=3><input type="text" name="emailid" id="emailid" size="50" placeholder="EMAIL ID"></td>
+		</tr>
+		
+		<tr>
+		<td><label>SEX </label></td>
+		<td colspan=2><input type="radio" name="sex" value="male" >Male 
+			<input type="radio" name="sex" value="Female" size="10">Female</td>
+		</tr>
+
+		
+
+<tr>
+  
+  <td><select name="Day">
+  <option value="-1" selected>DAY</option>
+  <option value="one">1</option>
+  <option value="two">2</option>
+  <option value="three">3</option>
+  <option value="four">4</option>
+  <option value="five">5</option>
+  <option value="six">6</option>
+  <option value="seven">7</option>
+  <option value="eight">8</option>
+  <option value="nine">9</option>
+  <option value="ten">10</option>
+  <option value="eleven">11</option>
+  <option value="twelve">12</option>
+  </select></td>
+
+  
+  <td><select name="Month">
+  <option value="-1" selected>MONTH</option>
+  <option value="jan">Jan</option>
+  <option value="feb">Feb</option>
+  <option value="mar">Mar</option>
+  <option value="apr">Apr</option>
+  
+  <option value="may">May</option>
+  <option value="jun">Jun</option>
+  <option value="jul">Jul</option>
+  <option value="aug">Aug</option>
+  
+    <option value="sept">sept</option>
+  <option value="oct">Oct</option>
+  <option value="nov">Nov</option>
+  <option value="dec">Dec</option>
+  </select></td>
+
+  
+  
+  <td><select name="Year">
+  <option value="-1" selected>YEAR</option>
+  <option value="Nalanda">1990</option>
+  <option value="UP">1991</option>
+  <option value="Goa">1992</option>
+  <option value="Patna">1993</option>
+  <option value="UP">1994</option>
+  <option value="Goa">1995</option>
+  <option value="Patna">1996</option>
+  <option value="UP">1997</option>
+  <option value="Goa">1998</option>
+  <option value="Patna">1999</option>
+  </select></td>
+</tr>
+	
+  <tr>
+  <td colspan="3"><center><input type="submit" value="Create Account" size="50" onclick="displayInfo()" /></td>
+  </tr>
+  </table>
+  </form>
+ 
+<script>
+	function validate()
+	{ 
+			if( document.StudentRegistration.textnames.value == "" )
+			{
+			 alert( "Please provide your First Name!" );
+			 document.StudentRegistration.textnames.focus() ;
+			 return false;
+			}
+			if( document.StudentRegistration.fathername.value == "" )
+			{
+			 alert( "Please provide your Last Name!" );
+			 document.StudentRegistration.fathername.focus() ;
+			 return false;
+			}
+			if( document.StudentRegistration.mobileno.value == "" ||
+				   isNaN( document.StudentRegistration.mobileno.value) ||
+				   document.StudentRegistration.mobileno.value.length != 10 )
+			{
+			 alert( "Please provide 10 digit Mobile No in the format 123." );
+			 document.StudentRegistration.mobileno.focus() ;
+			 return false;
+			}
+			
+   
+			var email = document.StudentRegistration.emailid.value;
+			atpos = email.indexOf("@");
+			dotpos = email.lastIndexOf(".");
+			if (email == "" || atpos < 1 || ( dotpos - atpos < 2 )) 
+			{
+				alert("Please enter correct email ID eg: abc@gmail.com")
+				document.StudentRegistration.emailid.focus() ;
+				return false;
+			}
+ 
+			if ( ( StudentRegistration.sex[0].checked == false ) && ( StudentRegistration.sex[1].checked == false ) )
+			{
+			alert ( "Please choose your Gender: Male or Female" );
+			return false;
+			}   
+			
+		   if( document.StudentRegistration.Day.value == "-1" )
+		   {
+			 alert( "Please provide your Day Of Birth!" );
+			 document.StudentRegistration.Day.focus() ;
+			 return false;
+		   }  
+		  
+		   if( document.StudentRegistration.Month.value == "-1" )
+		   {
+			 alert( "Please provide your Month of Birth!" );
+			 return false;
+		   }   
+		   if( document.StudentRegistration.Year.value == "-1" )
+		   {
+			 alert( "Please Select Year of Birth!" );
+			 return false;
+		   }   
+  
+		return( true );
+		
+		<!-- ____________ -->
+		function displayInfo()
+		{
+			x1=new XMLHttpRequest();
+			x1.open("get","StudRegistration.php",true);
+			x1.send();
+			x1.onreadystatechange = function()
+			{	
+				//alert("hi");
+				if (x1.readyState == 4 && x1.status == 200)
+				{
+				//	alert(x1.responseText);
+					getobj(x1.responseText);
+				
+				}
+			}
+		}
+		function getobj(obj)
+		{
+			var str="<table border=1> <tr><th>FirstName</th><th>LastName</th><th>Mobile</th><th>Email</th> </tr>";
+			arr = JSON.parse(obj);
+			for(i=0;i<arr.length;i++)
+			{
+			str+="<tr onclick=getstr(event)><td>"+arr[i].FirstName+" "+"</td><td>"+arr[i].LastName+" "+"</td><td>"+arr[i].MOBILE+" "+"</td><td>"+arr[i].Email+"</td></tr>";
+			}
+			document.getElementById("d1").innerHTML=str;
+			
+		}
+		
+	}
+ 
+</script>  
+  </body>
+  </html>
